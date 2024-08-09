@@ -739,7 +739,7 @@ NameError: name 'operation' is not defined. Did you mean: 'StopIteration'?
 
 Мы ссылаемся на переменную `operation`, уже как на содержащую какое-то значение, когда ещё не записали в неё ничего! Такое интерпретатор Питона не любит, но это легко починить - надо всего лишь присвоить переменной `operation` какое-нибудь значение *до* объявления цикла:
 
-```
+```python
 # User input
 
 first_number = int(input("Enter first number: "))
