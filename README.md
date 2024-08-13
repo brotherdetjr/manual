@@ -754,8 +754,75 @@ while operation != "+" and operation != "-" and operation != "*" and operation !
 ...
 ```
 
-Ради смеха я присвоил перменной `operation` значение `"Nya"`. Можно было присвоить пробел `" "`, пустую строку `""`, или даже какое-нибудь число (`0` или `42`). В реальной жизни я бы, наверное, предпочёл пустую строку или осбое значение `None` (пишется с большой буквы, без кавычек!), которое не является ни строкой, ни числом, ни чем-либо другим. С `None` нужно быть аккуратней, чтобы не пожинать ядовитые плоды ["ошибки на миллиард долларов"](https://en.wikipedia.org/wiki/Tony_Hoare). Но об этом позже. TODO!!!!!!!!!!
+Ради смеха я присвоил перменной `operation` значение `"Nya"`. Можно было присвоить пробел `" "`, пустую строку `""`, или даже какое-нибудь число (`0` или `42`).
 
 Присваивание переменной начального значение называется *инициализацией*. В некоторых случаях (даже в Питоне) допускается ссылаться на непроинициализированную явным образом область памяти, и с этим надо тоже быть аккуратней. Есть даже анекдот на эту тему:
 
 *Вовочке дали три яблока. Два он съел. Сколько яблок у него осталось? Думаете одно? Ничего подобного. Никто же не знает сколько у него уже было яблок до этого. Мораль - инициализируйте переменные!*
+
+# Задача
+
+Измени код так, чтобы когда пользователь вводил что-то помимо символов `+`, `-`, `*`, `/`, программа не просто переспрашивала бы пользовователя ввести знак операции, а при этом бы ещё сперва "ругалась" фразой "I'm not quite getting you!".
+
+То есть взаимодействие с программой выглядело бы примерно так:
+
+```
+Enter first number: 3
+Enter second number: 5
+Please enter an operation sign (+, -, *, /): dsfd
+I'm not quite getting you!
+Please enter an operation sign (+, -, *, /): ff
+I'm not quite getting you!
+Please enter an operation sign (+, -, *, /): +
+Result of addition: 8
+```
+
+Вариант решения смотри ниже.
+
+```
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+```
+
+```python
+# User input
+
+first_number = int(input("Enter first number: "))
+second_number = int(input("Enter second number: "))
+operation = input("Please enter an operation sign (+, -, *, /): ")
+while operation  != "+" and operation != "-" and operation != "*" and operation != "/":
+    print("I'm not quite getting you!")
+    operation = input("Please enter an operation sign (+, -, *, /): ")
+
+# Calculation
+
+if operation == "+":
+    result = first_number + second_number
+    print("Result of addition:", result)
+elif operation == "-":
+    result = first_number - second_number
+    print("Result of subtraction:", result)
+elif operation == "*":
+    result = first_number * second_number
+    print("Result of multiplication:", result)
+elif operation == "/":
+    result = first_number / second_number
+    print("Result of division:", result)
+```
+
+Видишь, мы инициализируем переменную `operation` не просто каким-то заранее выбранным значением, а значением, возвращаемым командой `input`. В первый раз интерпретатор выведет `Please enter an operation sign (+, -, *, /): ` и считает ввод пользователя без каких-либо жалоб (третий по счёту вызов `input` в коде, после запроса чисел, до цикла `while`). Затем интерпретатор дойдёт до цикла `while` проверит условие цикла, т.е. ввёл ли пользователь лабуду (`operation  != "+" and operation != "-" and operation != "*" and operation != "/"`). Если пользователь таки ввёл лабуду, то интерпретатор начинает выполнять тело цикла, и первым делом выводит сообщение о некорректном вводе: `print("I'm not quite getting you!")`. Дальше интерпретатор снова просит ввести пользователя знак операции и сохраняет введённую пользователем строку в `operation`. Наконец, интерпретатор прыгает обратно на начало цикла - на проверку значения `operation`. И так далее, пока пользователь не введёт знак операции.
