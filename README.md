@@ -903,6 +903,7 @@ Result of addition: 8
 
 first_number = int(input("Enter first number: "))
 second_number = int(input("Enter second number: "))
+
 operation = input("Please enter an operation sign (+, -, *, /): ")
 while operation  != "+" and operation != "-" and operation != "*" and operation != "/":
     print("I'm not quite getting you!")
