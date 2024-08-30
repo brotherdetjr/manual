@@ -762,6 +762,8 @@ if grom_gryanul { perekrestis() } rasslabsya()
 
 На языке [блок-схем](https://ru.wikipedia.org/wiki/%D0%91%D0%BB%D0%BE%D0%BA-%D1%81%D1%85%D0%B5%D0%BC%D0%B0) (это такой визуальный псевдокод для более наглядного представления программ):
 
+TODO!!!!!!!!!!!!!!! в примерах ниже - if/else, а надо просто if с несколькими командами в теле
+
 ![if на блок-схеме](if_block.png)
 
 ![if-else на блок-схеме](if_else_block.png)
